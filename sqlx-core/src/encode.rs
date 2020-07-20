@@ -5,6 +5,7 @@ use std::mem;
 use crate::database::{Database, HasArguments};
 
 /// The return type of [Encode::encode].
+#[derive(Debug, Clone, Copy)]
 pub enum IsNull {
     /// The value is null; no data was written.
     Yes,

@@ -90,3 +90,6 @@ mod time;
 
 #[cfg(feature = "json")]
 mod json;
+
+#[cfg(feature = "bit-vec")]
+mod bitvec;

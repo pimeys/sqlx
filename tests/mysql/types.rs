@@ -210,6 +210,19 @@ test_type!(decimal<sqlx::types::Decimal>(MySql,
     "CAST(12345.6789 AS DECIMAL(9, 4))" == sqlx::types::Decimal::from_str("12345.6789").unwrap(),
 ));
 
+#[cfg(feature = "bit-vec")]
+test_type!(bitvec<sqlx::types::BitVec>(
+    MySql,
+    "b'01101001'" == sqlx::types::BitVec::from_bytes(&[0b0110_1001]),
+    "b'00000110'" == {
+        let mut bit_vec = sqlx::types::BitVec::with_capacity(4);
+        bit_vec.push(true);
+        bit_vec.push(true);
+        bit_vec.push(false);
+        bit_vec
+    },
+));
+
 #[cfg(feature = "json")]
 mod json_tests {
     use super::*;

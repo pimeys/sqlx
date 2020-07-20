@@ -45,6 +45,7 @@ impl MySqlTypeInfo {
     }
 
     pub(crate) fn from_column(column: &ColumnDefinition) -> Self {
+        dbg!(column);
         Self {
             r#type: column.r#type,
             flags: column.flags,

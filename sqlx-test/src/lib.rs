@@ -159,7 +159,7 @@ macro_rules! __test_prepared_type {
                 $(
                     let query = format!($sql, $text);
 
-                    let row = sqlx::query(&query)
+                    let row = sqlx::query(dbg!(&query))
                         .bind($value)
                         .bind($value)
                         .fetch_one(&mut conn)
